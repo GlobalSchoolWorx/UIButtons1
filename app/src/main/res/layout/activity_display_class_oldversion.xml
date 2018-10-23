@@ -1,0 +1,194 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/global_school_worx_bg"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    tools:context="com.edu.worx.global.MainActivity">
+
+    <Button
+        android:id="@+id/uploadButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/slider_color_default"
+        android:text="@string/uploadText"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/subParentLinearLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@drawable/global_school_worx_bg"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            tools:context="com.edu.worx.global.MainActivity">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/linearLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="4"
+                android:background="@color/button_color_default"
+                android:baselineAligned="false"
+                android:orientation="vertical"
+                tools:context="com.edu.worx.global.MainActivity">
+
+                <ng.max.slideview.SlideView
+                    android:id="@+id/slideView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    app:buttonBackgroundColor="@color/colorPrimary"
+                    app:buttonImage="@drawable/ic_chevron_double_right_white"
+                    app:slideBackgroundColor="@color/slider_color_default"
+                    app:slideText="@string/first"
+                    app:slideTextColor="@color/stroke_color_default" />
+
+                <ng.max.slideview.SlideView
+                    android:id="@+id/slideView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    app:buttonBackgroundColor="@color/colorPrimary"
+                    app:buttonImage="@drawable/ic_chevron_double_right_white"
+                    app:slideBackgroundColor="@color/slider_color_default"
+                    app:slideText="@string/second"
+                    app:slideTextColor="@color/stroke_color_default" />
+
+                <ng.max.slideview.SlideView
+                    android:id="@+id/slideView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    app:buttonBackgroundColor="@color/colorPrimary"
+                    app:buttonImage="@drawable/ic_chevron_double_right_white"
+                    app:slideBackgroundColor="@color/slider_color_default"
+                    app:slideText="@string/third"
+                    app:slideTextColor="@color/stroke_color_default" />
+
+                <ng.max.slideview.SlideView
+                    android:id="@+id/slideView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    app:buttonBackgroundColor="@color/colorPrimary"
+                    app:buttonImage="@drawable/ic_chevron_double_right_white"
+                    app:slideBackgroundColor="@color/slider_color_default"
+                    app:slideText="@string/fourth"
+                    app:slideTextColor="@color/stroke_color_default" />
+
+                <ng.max.slideview.SlideView
+                    android:id="@+id/slideView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    app:buttonBackgroundColor="@color/colorPrimary"
+                    app:buttonImage="@drawable/ic_chevron_double_right_white"
+                    app:slideBackgroundColor="@color/slider_color_default"
+                    app:slideText="@string/fifth"
+                    app:slideTextColor="@color/stroke_color_default" />
+
+                <ng.max.slideview.SlideView
+                    android:id="@+id/slideView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    app:buttonBackgroundColor="@color/colorPrimary"
+                    app:buttonImage="@drawable/ic_chevron_double_right_white"
+                    app:slideBackgroundColor="@color/slider_color_default"
+                    app:slideText="@string/sixth"
+                    app:slideTextColor="@color/stroke_color_default" />
+
+                <ng.max.slideview.SlideView
+                    android:id="@+id/slideView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    app:buttonBackgroundColor="@color/colorPrimary"
+                    app:buttonImage="@drawable/ic_chevron_double_right_white"
+                    app:slideBackgroundColor="@color/slider_color_default"
+                    app:slideText="@string/seventh"
+                    app:slideTextColor="@color/stroke_color_default" />
+
+                <ng.max.slideview.SlideView
+                    android:id="@+id/slideView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    app:buttonBackgroundColor="@color/colorPrimary"
+                    app:buttonImage="@drawable/ic_chevron_double_right_white"
+                    app:slideBackgroundColor="@color/slider_color_default"
+                    app:slideText="@string/eighth"
+                    app:slideTextColor="@color/stroke_color_default" />
+
+                <ng.max.slideview.SlideView
+                    android:id="@+id/slideView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    app:buttonBackgroundColor="@color/colorPrimary"
+                    app:buttonImage="@drawable/ic_chevron_double_right_white"
+                    app:slideBackgroundColor="@color/slider_color_default"
+                    app:slideText="@string/ninth"
+                    app:slideTextColor="@color/stroke_color_default" />
+
+                <ng.max.slideview.SlideView
+                    android:id="@+id/slideView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    app:buttonBackgroundColor="@color/colorPrimary"
+                    app:buttonImage="@drawable/ic_chevron_double_right_white"
+                    app:slideBackgroundColor="@color/slider_color_default"
+                    app:slideText="@string/tenth"
+                    app:slideTextColor="@color/stroke_color_default" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3060173573728154/5016518969" />
+
+</LinearLayout>

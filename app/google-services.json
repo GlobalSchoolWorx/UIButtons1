@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1080668774748",
+    "firebase_url": "https://uibuttons1.firebaseio.com",
+    "project_id": "uibuttons1",
+    "storage_bucket": "uibuttons1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080668774748:android:f79ef08e72a31287",
+        "android_client_info": {
+          "package_name": "com.edu.worx.global"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080668774748-2a9skfjruvbnar9da4i812kdtkc1q6t2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.edu.worx.global",
+            "certificate_hash": "180c82e3820cf4672cfb7eab10666c39f935c0be"
+          }
+        },
+        {
+          "client_id": "1080668774748-48hhg9fv3b5u7a48e9dhiitdvlbesmhl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkXmoOpuvhkRWEEWWbq63ymziRJbWU1uc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080668774748-48hhg9fv3b5u7a48e9dhiitdvlbesmhl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

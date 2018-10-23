@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.edu.worx.global.DashboardLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:background="#f8f9fe"
+    android:id="@+id/fragment_layout">
+<!--
+      Friends Button
+    <Button
+        android:id="@+id/btn_friends"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/fileicon"
+        android:text="Friends" />
+    -->
+
+
+
+</com.edu.worx.global.DashboardLayout>
+

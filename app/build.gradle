@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "com.edu.worx.global"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 18
+        versionName "2.7"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        /*jackOptions {
+            enabled true
+        }*/
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //  addMobAppId "ca-app-pub-3060173573728154~4462719073"
+        }
+
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/menu'] } }
+}
+
+allprojects {
+    repositories {
+        google()
+        maven {
+            url "https://maven.google.com"
+        }
+        maven {
+            url "https://mvnrepository.com"
+        }
+        mavenCentral()
+        jcenter()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.google.firebase:firebase-ads:15.0.1'
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    implementation 'com.google.android.gms:play-services-base:15.0.1'
+    implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.google.firebase:firebase-storage:16.0.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.1'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.1'
+    //implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    implementation 'com.github.barteksc:android-pdf-viewer:3.1.0-beta.1'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.github.MAXDeliveryNG:slideview:1.0.1'
+    implementation 'com.itextpdf:itextg:5.5.10'
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation 'com.android.support:design:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.google.firebase:firebase-database:16.0.1'
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+//apply plugin: 'com.google.gms.google-services'
+

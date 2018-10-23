@@ -16,10 +16,25 @@
                             <entry key="actionbar">
                               <value>
                                 <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="trimmed" value="true" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="C:\Users\ibindra\AndroidStudioProjects\UIButtons1\app\src\main\res\drawable\gsw_1280_720.jpg" />
+                                      <entry key="imageAsset" value="C:\Users\ibindra\AndroidStudioProjects\UIButtons1\app\src\main\res\drawable\gsw_512_512.png" />
                                       <entry key="outputName" value="global_school_worx" />
                                     </map>
                                   </option>

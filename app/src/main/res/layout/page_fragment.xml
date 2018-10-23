@@ -1,0 +1,50 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.edu.worx.global.PageFragment">
+
+    <include layout="@layout/actionbar_layout"/>
+    <!-- TODO: Update blank fragment layout -->
+    <!--<TextView
+        android:id = "@+id/fragmentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        />-->
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/fragmentPdfView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp" >
+
+    </com.github.barteksc.pdfviewer.PDFView>
+
+    <LinearLayout android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/download"
+            android:textColor="@color/colorAccent"
+            android:textAlignment="center"
+            android:visibility="visible" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style= "?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:indeterminate="true"
+        android:layout_marginTop="50dp"
+        />
+    </LinearLayout>
+</FrameLayout>

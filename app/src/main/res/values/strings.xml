@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Global School Worx</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="worksheets_fragment">WORKSHEETS</string>
+    <string name="testpapers_fragment">TESTPAPERS</string>
+    <string name="first">First</string>
+    <string name="second">Second</string>
+    <string name="third">Third</string>
+    <string name="fourth">Fourth</string>
+    <string name="fifth">Fifth</string>
+    <string name="sixth">Sixth</string>
+    <string name="seventh">Seventh</string>
+    <string name="eighth">Eighth</string>
+    <string name="ninth">Ninth</string>
+    <string name="tenth">Tenth</string>
+    <string name="download">Fetching document...</string>
+    <string name="download_pdf">Download PDF</string>
+    <string name="info">Info</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_google_sign_in">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="uploadText">"Upload Your Testpapers or Worksheets Here \n and Earn Reward Points!"</string>
+    <string name="uploadButton">"Upload Document"</string>
+    <string name="selectClass">"Select Class"</string>
+    <string-array name="spinner_class_items">
+        <item>First</item>
+        <item>Second</item>
+        <item>Third</item>
+        <item>Fourth</item>
+        <item>Fifth</item>
+        <item>Sixth</item>
+        <item>Seventh</item>
+        <item>Eighth</item>
+        <item>Ninth</item>
+        <item>Tenth</item>
+    </string-array>
+    <string-array name="spinner_wg_class_items">
+        <item>Eighth</item>
+        <item>Ninth</item>
+    </string-array>
+</resources>
