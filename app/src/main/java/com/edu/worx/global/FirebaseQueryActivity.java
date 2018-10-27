@@ -14,10 +14,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
@@ -178,7 +182,8 @@ public class FirebaseQueryActivity extends AppCompatActivity {
 
             topicSize = topics.size();
             topicNum = num / topicSize;
-
+            final LinearLayout progressBar2 = findViewById(R.id.progressBarLayout);
+            progressBar2.bringToFront();
             AtomicInteger latch = new AtomicInteger(topicSize);
             AtomicInteger extraQues = new AtomicInteger(num % topicSize);
             for (int z = 0; z < topicSize; z++) {
@@ -193,6 +198,8 @@ public class FirebaseQueryActivity extends AppCompatActivity {
                         int extraQuesCnt = extraQues.get();
                         int divFactor = 1;
                         long cnt = dataSnapshot.getChildrenCount();
+                        mQuess.clear();
+                        quesLocalArray.clear();
                         for (DataSnapshot quesSnapshot : dataSnapshot.getChildren()) {
                             if (quesSnapshot != null) {
                                 QuestionSet qSet = quesSnapshot.getValue(QuestionSet.class);
@@ -211,6 +218,7 @@ public class FirebaseQueryActivity extends AppCompatActivity {
                         extraQues.getAndSet(extraQuesCnt);
                         if (latch.getAndDecrement() == 1) {
                             writeToPdfDoc(mFinalSelectedQuess, withAnswers);
+                            progressBar2.setVisibility (View.GONE);
                         }
                     }
 

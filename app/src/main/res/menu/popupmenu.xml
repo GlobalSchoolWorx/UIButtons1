@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/download_pdf"
-        android:icon="@drawable/global_school_worx_bg"
-        android:title = "@string/download_pdf" />
-    <item android:id="@+id/Info"
-        android:icon="@drawable/global_school_worx_bg"
-        android:title="@string/info" />
-
+    <item android:id="@+id/download_pdf" android:title = "@string/download_pdf" />
+    <item android:id="@+id/Info" android:title="@string/info" />
 </menu>

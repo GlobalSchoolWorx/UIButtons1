@@ -120,7 +120,7 @@ public class FragmentWorksheets extends Fragment {
 
         view.setPadding(0, (int)(getPixel(screenTopMargin)), 0, 0);
         if (subjectArray.length == 0)
-          view.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.global_school_worx_tbd_bg, null));
+          view.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.global_school_worx, null));
         else
           for (int i = 0; i < subjectArray.length; i++) {
             final Button myButton = new Button(getContext());

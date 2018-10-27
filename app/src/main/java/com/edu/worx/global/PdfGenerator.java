@@ -64,11 +64,7 @@ public class PdfGenerator {
         document.finishPage(page);
 
         if(withAnswers) {
-            /*
-            StringBuilder strPara2 = new StringBuilder("\nANSWERS\n");
-            for (int i = 0; i < arrQuess.size(); i++){
-                strPara2.append(i + 1).append(".  ").append(arrQuess.get(i).Answer).append("\n\n");
-            } */
+
 
             staticLayout = new StaticLayout(csb.answers, paint, textAreaWidth, alignment, 1.2f, 0.8f, true);
             pageDimension = getPageDimension(staticLayout, topPadding, footer);

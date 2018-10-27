@@ -38,6 +38,8 @@ import java.io.InputStream;
 import java.util.IdentityHashMap;
 import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import ng.max.slideview.SlideView;
 
@@ -45,6 +47,7 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 public class MainActivity extends DisplayMenuActivity {
+    AtomicBoolean alreadyStarted = new AtomicBoolean(false);
     boolean promoValid = false;
     String errorMsg ="Free Promo Offer has ended.Please Upgrade to the latest version from Google Play.";
     @Override
@@ -77,8 +80,6 @@ public class MainActivity extends DisplayMenuActivity {
         File mydir = getDir("", Context.MODE_PRIVATE);
         File propFile = new File(mydir, "config.xml");
 
-
-
         try {
         //    wgButton.setEnabled(false);
             if(propFile.exists()) {
@@ -86,7 +87,8 @@ public class MainActivity extends DisplayMenuActivity {
             }
 
             propFile.createNewFile();
-            FileDownloadTask fileDownloadTask = mStorageReference.getFile(propFile);
+            FileDownloadTask  fileDownloadTask = mStorageReference.getFile(propFile);
+
             fileDownloadTask.addOnSuccessListener(this, new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -103,7 +105,8 @@ public class MainActivity extends DisplayMenuActivity {
 
                     } catch (IOException ignore) {
                     } finally{
-                        setupWorksheetBtnOnClickListener(wgButton);
+                        if(!alreadyStarted.get())
+                          setupWorksheetBtnOnClickListener(wgButton, false);
                     }
                 }
             });
@@ -111,11 +114,13 @@ public class MainActivity extends DisplayMenuActivity {
             fileDownloadTask.addOnFailureListener(this, new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    setupWorksheetBtnOnClickListener(wgButton);
+                    if(!alreadyStarted.get())
+                      setupWorksheetBtnOnClickListener(wgButton, false);
                 }
             });
-        } catch (IOException e) {
-            setupWorksheetBtnOnClickListener(wgButton);
+        } catch (Exception e) {}
+          finally {
+            setupWorksheetBtnOnClickListener(wgButton, true);
         }
 
         Button uploadbutton = findViewById(R.id.uploadButton);
@@ -221,8 +226,12 @@ public class MainActivity extends DisplayMenuActivity {
 
     }
 
-    private void setupWorksheetBtnOnClickListener(Button wgButton) {
+    private void setupWorksheetBtnOnClickListener(Button wgButton, boolean override) {
         wgButton.setEnabled(true);
+        alreadyStarted.set(true);
+        if(override)
+            promoValid = true;
+
         wgButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
