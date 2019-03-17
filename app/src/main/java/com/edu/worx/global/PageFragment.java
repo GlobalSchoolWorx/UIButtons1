@@ -109,6 +109,7 @@ public class PageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(TRUE);
+
         FirebaseStorage inst = FirebaseStorage.getInstance();
         mStorageReference = inst.getReference();
     }
@@ -131,9 +132,21 @@ public class PageFragment extends Fragment {
     }
 
     @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+
+        MenuItem item = menu.findItem(R.id.show_answers);
+        item.setVisible(FALSE);
+        item = menu.findItem(R.id.hide_answers);
+        item.setVisible(FALSE);
+        // super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+
         switch(item.getItemId()) {
+
             case R.id.download_pdf :
                 onDownload(localFile.toString());
                 break;

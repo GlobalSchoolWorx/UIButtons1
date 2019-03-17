@@ -24,7 +24,7 @@ public class PdfGenerator {
     private static final int mPageWidthA4Size = 595;
     private static final int mPageHeightA4Size = 841;
 
-    public static void generatePdf(Context cxt, ArrayList<FirebaseQueryActivity.QuestionSet> arrQuess, boolean withAnswers, boolean withWatermark, File targetPdf){
+    public static void generatePdf(Context cxt, ArrayList<QuestionSet> arrQuess, boolean withAnswers, boolean withWatermark, File targetPdf, boolean shuffle){
         Random seed = new Random();
         DisplayMetrics displayMetrics = cxt.getApplicationContext().getResources().getDisplayMetrics();
         //float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
@@ -36,7 +36,7 @@ public class PdfGenerator {
         TextPaint paint = new TextPaint();
         //paint.setTypeface(typeface);
         paint.setAntiAlias(true);
-        paint.setTextSize(4 * displayMetrics.density);
+        paint.setTextSize(8 * displayMetrics.density);
         paint.setColor(0xFF000000);
         Layout.Alignment alignment = Layout.Alignment.ALIGN_NORMAL;
         final int leftPadding = (int) (7.6 * displayMetrics.density);
@@ -44,7 +44,7 @@ public class PdfGenerator {
         final int topPadding = (int) (3.8 * displayMetrics.density);
         final int footer = (int) (20 * displayMetrics.density);
         final int textAreaWidth = mPageWidthA4Size -(leftPadding+rightPadding);
-        CombinedStringBuilder csb = getQuestionsnAnswers(seed, arrQuess);
+        CombinedStringBuilder csb = getQuestionsnAnswers(seed, arrQuess, shuffle);
         StaticLayout staticLayout = new StaticLayout(csb.questions, paint, textAreaWidth, alignment, 1.2f, 0.8f, true);
 
         Pair<Integer, Integer> pageDimension = getPageDimension(staticLayout, topPadding, footer);
@@ -53,6 +53,16 @@ public class PdfGenerator {
         PdfDocument document = new PdfDocument();
         PdfDocument.Page page = document.startPage(pageInfo);
         Canvas canvas = page.getCanvas();
+        paint.setColor(0xFFA1E7EE);
+
+        canvas.drawRect(0, 0, pageDimension.first, pageDimension.second, paint);
+        canvas.save();
+        canvas.translate(leftPadding, topPadding);
+
+        staticLayout.draw(canvas);
+        canvas.restore();
+
+        paint.setColor(0xFF000000);
         if(withWatermark) {
             drawWatermark(canvas, mPageWidthA4Size, mPageHeightA4Size, staticLayout.getHeight() + topPadding, leftPadding, rightPadding);
         }
@@ -65,12 +75,26 @@ public class PdfGenerator {
 
         if(withAnswers) {
 
+            paint.setAntiAlias(true);
+            paint.setTextSize(8 * displayMetrics.density);
+            paint.setColor(0xFF000000);
 
-            staticLayout = new StaticLayout(csb.answers, paint, textAreaWidth, alignment, 1.2f, 0.8f, true);
+            staticLayout = new StaticLayout("ANSWERS\n\n\n"+ csb.answers, paint, textAreaWidth, alignment, 1.2f, 0.8f, true);
+
             pageDimension = getPageDimension(staticLayout, topPadding, footer);
             pageInfo = getPageInfo(pageDimension, 2);
             page = document.startPage(pageInfo);
             canvas = page.getCanvas();
+            paint.setColor(0xFFA1E7EE);
+
+            canvas.drawRect(0, 0, pageDimension.first, pageDimension.second, paint);
+            canvas.save();
+            canvas.translate(leftPadding, topPadding);
+
+            staticLayout.draw(canvas);
+            canvas.restore();
+
+            paint.setColor(0xFF000000);
             if(withWatermark) {
                 drawWatermark(canvas, mPageWidthA4Size, mPageHeightA4Size, staticLayout.getHeight() + topPadding, leftPadding, rightPadding);
             }
@@ -80,6 +104,8 @@ public class PdfGenerator {
             canvas.restore();
 
             document.finishPage(page);
+
+
         }
 
         try {
@@ -141,16 +167,69 @@ public class PdfGenerator {
 
         return paths;
     }
-    private static CombinedStringBuilder getQuestionsnAnswers( Random seed, ArrayList<FirebaseQueryActivity.QuestionSet> arrQuess){
+    private static CombinedStringBuilder getQuestionsnAnswers( Random seed, ArrayList<QuestionSet> arrQuess, boolean shuffle){
         StringBuilder questions = new StringBuilder();
         StringBuilder answers = new StringBuilder();
         CombinedStringBuilder quesansArr = new CombinedStringBuilder();
-
+        String romanTag = "";
         quesansArr.answers = answers;
         quesansArr.questions = questions;
 
-        ArrayList<FirebaseQueryActivity.QuestionSet> questionsSet = new ArrayList<>(arrQuess);
-        int tag = 1;
+
+        ArrayList<QuestionSet> questionsSet = new ArrayList<>(arrQuess);
+        int tag = 1, z, counter = 0;
+        int repeatCounterAfter = 6;  /* Only 5 sub questions per Selected Question */
+
+        if (!shuffle) {
+            for ( int i = 0; i<arrQuess.size(); i++) {
+                z = counter % repeatCounterAfter;
+                switch (counter) {
+                    case 1:
+                        romanTag = "i";
+                        break;
+                    case 2:
+                        romanTag = "ii";
+                        break;
+                    case 3:
+                        romanTag = "iii";
+                        break;
+                    case 4:
+                        romanTag = "iv";
+                        break;
+                    case 5:
+                        romanTag = "v";
+                        break;
+                    case 6:
+                        romanTag = "vi";
+                        break;
+                    case 7:
+                        romanTag = "vii";
+                        break;
+                    case 8:
+                        romanTag = "viii";
+                        break;
+                    case 9:
+                        romanTag = "ix";
+                        break;
+                    case 10:
+                        romanTag = "x";
+                        break;
+                }
+                if (z == 0) {
+                    questions.append("Q").append(tag).append(": ").append(arrQuess.get(i).Question).append("\n\n");
+                    tag++;
+                } else
+                    questions.append(romanTag).append(") ").append(arrQuess.get(i).Question).append("\n\n");
+
+                if (counter == repeatCounterAfter) /* Reset Counter after  every 5 sub questions + 1 main question */
+                    counter = 0;
+
+                    counter++;
+            }
+            return quesansArr;
+        }
+
+
         while(!questionsSet.isEmpty()) {
             int index = seed.nextInt(questionsSet.size()-1);
 

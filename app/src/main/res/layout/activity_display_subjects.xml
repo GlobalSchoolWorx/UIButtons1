@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    tools:context="com.edu.worx.global.MainActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/subjects_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="5"
     android:id="@+id/dynamicSubjectScrollLayout">
     <LinearLayout
         android:id="@+id/dynamicSubjectLayout"
@@ -18,5 +34,12 @@
 
     </LinearLayout>
 </ScrollView>
-
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:adSize="BANNER"
+        app:adUnitId= "ca-app-pub-3060173573728154/7587717030" />
+</LinearLayout>
 

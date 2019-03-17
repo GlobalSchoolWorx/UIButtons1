@@ -6,11 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.edu.worx.global.SwipeViewActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/swipeview_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:layout_marginTop="50dp"
         android:visibility="visible">
 
     </android.support.v4.view.ViewPager>

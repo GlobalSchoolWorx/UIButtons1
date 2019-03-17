@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+
+<android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+<ScrollView android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        android:layout_weight="5"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            tools:context=".DrawerLayoutActivity">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:id="@+id/sentences_layout"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:background= "@drawable/layout_roundedcorners_bg"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="1. The Sentence"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/sentences_worksheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_roundedcorners_bg"
+            android:text="Worksheet" />
+<!--
+        <Button
+            android:id="@+id/sentences_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_roundedcorners_bg"
+            android:text="Notes" />    -->
+    </LinearLayout>
+
+</LinearLayout>
+
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/noun_layout"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background= "@drawable/layout_roundedcorners_bg"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="2. The Noun"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:id = "@+id/linear_layout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/nouns_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/nouns_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                   -->
+        </LinearLayout>
+
+    </LinearLayout>
+
+<LinearLayout
+android:id = "@+id/pronoun_layout"
+android:layout_width="match_parent"
+android:layout_height="0dp"
+android:layout_weight="1"
+android:background= "@drawable/layout_roundedcorners_bg"
+android:layout_margin="10dp"
+android:orientation="vertical">
+
+<TextView
+    android:id="@+id/textView14"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:text="3. The Pronoun"
+    android:textColor="@color/colorAccent"
+    android:textSize="20dp" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/pronoun_worksheet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_roundedcorners_bg"
+        android:text="Worksheet" />
+
+ <!--    <Button
+        android:id="@+id/pronoun_notes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background= "@drawable/button_roundedcorners_bg"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:text="Notes" />          -->
+</LinearLayout>
+
+</LinearLayout>
+
+
+    <LinearLayout
+        android:id = "@+id/adjective_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="4. The Adjective"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/adjective_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/adjective_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                       -->
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id = "@+id/degofcomparisons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="5. Degrees of Comparison"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/degofcomparisons_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/degofcomparisons_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                -->
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id = "@+id/articles_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="6. Articles"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/articles_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/articles_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />              -->
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/verb_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="7. Verbs : Modals and Auxillaries"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/verb_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+  <!--          <Button
+                android:id="@+id/verb_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                    -->
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/simptenses_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="8. Simple and Continuous Tenses"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/simptenses_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/simptenses_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                 -->
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/perftenses_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="9. Perfect Tenses"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/perftenses_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/perftenses_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                  -->
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/verbtransitive_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="10. Verbs : Transitive and Intransitive"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/verbtransitive_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+<!--            <Button
+                android:id="@+id/verbtransitive_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                 -->
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/voice_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="11. Active and Passive Voice"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/voice_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+<!--            <Button
+                android:id="@+id/voice_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                  -->
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/subverbagreement_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="12. Subject-Verb Agreement"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/subverbagreement_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/subverbagreement_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                     -->
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/adverbs_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="13. The Adverb"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/adverbs_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/adverbs_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                    -->
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+android:id="@+id/preposition_layout"
+android:layout_width="match_parent"
+android:layout_height="0dp"
+android:layout_weight="1"
+android:layout_margin="10dp"
+android:background="@drawable/layout_roundedcorners_bg"
+android:orientation="vertical">
+
+<TextView
+    android:id="@+id/textView13"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:text="14. The Preposition"
+    android:textColor="@color/colorAccent"
+    android:textSize="20dp" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/preposition_worksheet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_roundedcorners_bg"
+        android:text="Worksheet" />
+
+ <!--    <Button
+        android:id="@+id/preposition_notes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background= "@drawable/button_roundedcorners_bg"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:text="Notes" />                  -->
+</LinearLayout>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/conjuction_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="14. The Conjunction"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/conjunction_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/conjunction_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                     -->
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/interjection_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="15. The Interjection"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/interjection_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/interjection_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                     -->
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/punctuation_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="16. Punctuation"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/punctuation_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+  <!--          <Button
+                android:id="@+id/punctuation_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                 -->
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/transformaion_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="17. Transformation of Sentences"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/transformation_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/transformation_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                    -->
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/directindirect_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@drawable/layout_roundedcorners_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="18. Direct and Indirect Speech"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/directindirect_worksheet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_roundedcorners_bg"
+                android:text="Worksheet" />
+
+ <!--           <Button
+                android:id="@+id/directindirect_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background= "@drawable/button_roundedcorners_bg"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Notes" />                     -->
+        </LinearLayout>
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+
+</ScrollView>
+</LinearLayout>

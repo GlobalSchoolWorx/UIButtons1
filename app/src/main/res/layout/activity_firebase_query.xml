@@ -6,17 +6,26 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".FirebaseQueryActivity">
 
-<include layout="@layout/actionbar_layout"/>
+<android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/displayPdfView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/button_color_default"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
-<com.github.barteksc.pdfviewer.PDFView
-    android:id="@+id/displayPdfView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="8dp"
-    tools:layout_editor_absoluteX="8dp" >
-
-</com.github.barteksc.pdfviewer.PDFView>
+    </com.github.barteksc.pdfviewer.PDFView>
 
 <LinearLayout android:id="@+id/progressBarLayout"
     android:layout_width="match_parent"
@@ -35,7 +44,7 @@ tools:context=".FirebaseQueryActivity">
         android:visibility="visible" />
 
     <ProgressBar
-        android:id="@+id/progressBar2"
+        android:id="@+id/progressBar"
         style= "?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="20dp"
@@ -44,4 +53,5 @@ tools:context=".FirebaseQueryActivity">
         android:layout_marginTop="50dp"
         />
 </LinearLayout>
+
 </FrameLayout>

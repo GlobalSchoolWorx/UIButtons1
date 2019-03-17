@@ -3,6 +3,7 @@ package com.edu.worx.global;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -18,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.itextpdf.text.pdf.parser.Line;
 
 import java.io.File;
@@ -43,12 +46,21 @@ public class DisplaySubjectsActivity extends DisplayMenuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_subjects);
         invalidateOptionsMenu();
+        /* AD CONTENT REQUIRED PRIVACY POLICY */
+        AdView mAdView = findViewById(R.id.adView2);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         // my_child_toolbar is defined in the layout file
        // setSupportActionBar(findViewById(R.id.cl))
         selected_class = getIntent().getStringExtra( DisplaySubjectsActivity.SELECTED_CLASS);
         // Get a support ActionBar corresponding to this toolbar and enable the Up button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setTitle("Class: " + selected_class + "            SUBJECTS");
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.subjects_toolbar);
+        setSupportActionBar(toolbar);
+        if ( getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setTitle("Class: " + selected_class + "            SUBJECTS");
+        }
 
         DisplayMetrics displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
         float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
@@ -96,6 +108,7 @@ public class DisplaySubjectsActivity extends DisplayMenuActivity {
             }
 
             myButton.setTextSize(15f);
+            myButton.setTextColor(Color.WHITE);
             myButton.setLayoutParams(parms);
             myButton.setBackground(ContextCompat.getDrawable(this, R.drawable.blackbutton));
             layout.addView(myButton);
@@ -160,8 +173,13 @@ public class DisplaySubjectsActivity extends DisplayMenuActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.download_pdf);
+        MenuItem item = menu.findItem(R.id.show_answers);
         item.setVisible(FALSE);
+        item = menu.findItem(R.id.hide_answers);
+        item.setVisible(FALSE);
+        item = menu.findItem(R.id.download_pdf);
+        item.setVisible(FALSE);
+
         return TRUE;
     }
 

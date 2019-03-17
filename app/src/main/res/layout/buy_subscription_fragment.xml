@@ -1,0 +1,124 @@
+<!--
+  Copyright 2014 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/buy_subscription"
+    android:paddingTop="32dp"
+    android:paddingBottom="32dp"
+    android:background="#c000">
+
+        <TextView android:id="@+id/error_buy_subscription_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="#cfff"
+            android:text="@string/error_internet_connectivity"
+            android:visibility="gone"/>
+
+        <TextView android:id="@+id/buy_subscription_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="#cfff"
+            android:text="@string/buy_subscription_mesg"/>
+
+        <View
+            android:id="@+id/space_above"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent" />
+
+        <RadioGroup
+            android:id="@+id/sku_chooser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buy_subscription_text"
+            android:layout_above="@id/image_buy_subscription_button"
+            android:layout_centerHorizontal="true"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:checkedButton="@+id/one_year_subscription_radio">
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/test_subscription_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/test_subscription"/>
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/one_year_subscription_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/one_year_subscription"/>
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/six_months_subscription_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/six_months_subscription"/>
+        </RadioGroup>
+
+        <!--
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:layout_gravity="top|center_horizontal"
+            android:id="@+id/sku_chooser" />
+            -->
+
+        <View
+            android:id="@+id/space_below"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/image_buy_subscription_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawablePadding="8dp"
+            android:drawableTop="@drawable/cart"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingBottom="16dp"
+            android:paddingEnd="24dp"
+            android:paddingStart="24dp"
+            android:paddingTop="24dp"
+            android:textColor="#fff"
+            android:textSize="22sp"
+            android:textStyle="italic"
+            android:text="@string/buy_subscription" />
+
+</RelativeLayout>

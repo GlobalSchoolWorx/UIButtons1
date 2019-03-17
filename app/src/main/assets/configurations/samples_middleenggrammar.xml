@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<samples>
+
+    <sample name = "Middle" value="middleenggrammar"/>
+    <sample name = "The Sentence" value="sample_sentences.pdf"/>
+    <sample name = "The Noun" value="sample_noun.pdf"/>
+    <sample name = "The Pronoun" value="sample_pronoun.pdf"/>
+    <sample name = "The Adjective" value="sample_adjectives.pdf"/>
+    <sample name = "Degrees of Comparison" value="sample_degree.pdf"/>
+    <sample name = "Articles" value="sample_articles.pdf"/>
+    <sample name = "Verbs : Modals and Auxillaries" value="sample_verbmodals.pdf"/>
+    <sample name = "Simple and Continuous Tenses" value="sample_simpletenses.pdf"/>
+    <sample name = "Perfect Tenses" value="sample_perfecttense.pdf"/>
+    <sample name = "Verbs : Transitive and Intransitive" value="sample_verbtransitive.pdf"/>
+    <sample name = "Active and Passive Voice" value="sample_voice.pdf"/>
+    <sample name = "Subject-Verb Agreement" value="sample_verbagreement.pdf"/>
+    <sample name = "The Adverb" value="sample_adverbs.pdf"/>
+    <sample name = "The Preposition" value="sample_preposition.pdf"/>
+    <sample name = "The Conjunction" value="sample_conjunctions.pdf"/>
+    <sample name = "The Interjection" value="sample_interjections.pdf"/>
+    <sample name = "Punctuation" value="sample_punctuation.pdf"/>
+    <sample name = "Transformation of Sentences" value="sample_transformation.pdf"/>
+    <sample name = "Direct and Indirect Speech" value="sample_directindirect.pdf"/>
+</samples>

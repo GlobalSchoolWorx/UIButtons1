@@ -1,4 +1,5 @@
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:scrollbars="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -15,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="90dp"
-        android:layout_marginRight="90dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="90dp"
         android:background="#3f51b5"
         android:text="YEARS" />
 

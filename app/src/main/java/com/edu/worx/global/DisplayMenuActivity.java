@@ -38,7 +38,12 @@ public class DisplayMenuActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch(item.getItemId()) {
-
+            case (R.id.show_answers) : {
+                return FALSE;
+            }
+            case (R.id.hide_answers) : {
+                return FALSE;
+            }
             case (R.id.download_pdf) :{
                return FALSE;
             }

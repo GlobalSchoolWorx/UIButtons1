@@ -16,7 +16,12 @@
     <string name="tenth">Tenth</string>
     <string name="download">Fetching document...</string>
     <string name="download_pdf">Download PDF</string>
+    <string name="show_answers">Show Answers</string>
+    <string name="hide_answers">Hide Answers</string>
     <string name="info">Info</string>
+    <string name="primary">Primary School</string>
+    <string name="middle">Intermediate Level</string>
+    <string name="high">High School</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -37,6 +42,13 @@
     <string name="uploadText">"Upload Your Testpapers or Worksheets Here \n and Earn Reward Points!"</string>
     <string name="uploadButton">"Upload Document"</string>
     <string name="selectClass">"Select Class"</string>
+    <string-array name="spinner_subject_items">
+        <item>English</item>
+        <item>Hindi</item>
+        <item>Maths</item>
+        <item>Computer Science</item>
+        <item>Science</item>
+    </string-array>
     <string-array name="spinner_class_items">
         <item>First</item>
         <item>Second</item>
@@ -54,4 +66,15 @@
         <item>Ninth</item>
     </string-array>
     <string name="generateworksheet">Generating Worksheet...</string>
-</resources>
+    <string name="key_ads_display_local_state">key_ads_display_local_state_new</string>
+    <string name="buy_subscription">Buy Subscription</string>
+    <string name="buy_subscription_mesg">Please buy an appropriate subscription for Complete Functionality. Subscription can be canceled any time during free trial period and your card will not be charged. </string>
+    <string name="error_internet_connectivity">No Internet Connectivity! Please ensure net connectivity to continue to enjoy the services. </string>
+    <string name="billing_unavailable_unknown_reason">In App Billing unavailable, Please check connectivity or try after sometime.</string>
+    <string name="billing_unavailable_android_market_version"><![CDATA[In-app billing service is unavailable, please upgrade Android Market/Play to version >= 3.9.16]]></string>
+    <string name="billing_connecting_to_google_play">Connecting To Google…</string>
+    <string name="six_months_subscription">Six Months Subscription</string>
+    <string name="one_year_subscription">One Year Subscription</string>
+    <string name="test_subscription">Test Subscription</string>
+
+   </resources>

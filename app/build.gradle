@@ -1,17 +1,28 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'GlobalSchoolWorx'
+            keyPassword 'avneet05'
+            storeFile file('C:/Users/ibindra/GlobalSchoolWorx/GlobalSchoolWorxKey.jks')
+            storePassword 'avneet05'
+        }
+    }
     compileSdkVersion 26
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.edu.worx.global"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 19
-        versionName "2.8"
+        versionCode 33
+        versionName "3.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
+        dexOptions {
+            javaMaxHeapSize "4g"
+        }
         /*jackOptions {
             enabled true
         }*/
@@ -22,14 +33,23 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //  addMobAppId "ca-app-pub-3060173573728154~4462719073"
+            signingConfig signingConfigs.config
         }
 
+        debug{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
     }
     compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/menu'] } }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 allprojects {
@@ -47,29 +67,36 @@ allprojects {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:support-v4:26.1.0'
     testImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.google.firebase:firebase-ads:15.0.1'
-    implementation 'com.google.android.gms:play-services-ads:15.0.1'
-    implementation 'com.google.android.gms:play-services-base:15.0.1'
-    implementation 'com.google.firebase:firebase-core:16.0.0'
-    implementation 'com.google.firebase:firebase-storage:16.0.1'
-    implementation 'com.google.firebase:firebase-auth:16.0.1'
+    implementation 'com.google.firebase:firebase-ads:17.1.3'
+    implementation 'com.google.android.gms:play-services-base:16.1.0'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.google.firebase:firebase-storage:16.0.5'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
     implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     //implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
     implementation 'com.github.barteksc:android-pdf-viewer:3.1.0-beta.1'
-    implementation 'com.android.support:support-v4:26.1.0'
+    //  implementation 'com.android.support:support-v4:26.1.0'
     implementation 'com.github.MAXDeliveryNG:slideview:1.0.1'
     implementation 'com.itextpdf:itextg:5.5.10'
-    implementation 'com.google.android.gms:play-services-auth:15.0.1'
     implementation 'com.android.support:design:26.1.0'
+    // implementation 'com.android.support:appcompat-v7:28.0.0'
+    // implementation 'com.android.support:design:28.0.0'
     testImplementation 'junit:junit:4.12'
-    implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.google.firebase:firebase-database:16.0.6'
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.android.billingclient:billing:1.1'
+    implementation 'com.google.android.gms:play-services-places:16.0.0'
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    //implementation 'com.github.bumptech.glide:glide:4.3.1'
+    implementation 'com.google.android.libraries.places:places:1.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
