@@ -19,6 +19,7 @@ import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.SkuDetails;
 import com.edu.worx.global.billing.BuySubscriptionFragment;
 import com.edu.worx.global.billing.SubscriptionCheckService;
+import com.edu.worx.global.utils.ApplicationConfigurations;
 import com.firebase.jobdispatcher.Constraint;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
 import com.firebase.jobdispatcher.GooglePlayDriver;
@@ -325,7 +326,6 @@ public class MainActivity extends DisplayMenuActivity {
     }
 
     private BillingManager mBillingManager = null;
-    private boolean setUpComplete = false;
     private void setUpBilling(){
         mBillingManager = new BillingManager(this, new BillingManager.BillingUpdatesListener() {
 
@@ -339,6 +339,9 @@ public class MainActivity extends DisplayMenuActivity {
 
             @Override
             public void onConsumeFinished(int result, String skuId, String token) {
+                if(BuildConfig.DEBUG) {
+                    ApplicationConfigurations.changeAdsDisplayLocalState(MainActivity.this.getApplicationContext(), true);
+                }
             }
 
             @Override
