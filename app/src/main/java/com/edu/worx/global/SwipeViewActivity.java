@@ -13,7 +13,12 @@ public class SwipeViewActivity extends AppCompatActivity implements PageFragment
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_view);
         // Get a support ActionBar corresponding to this toolbar and enable the Up button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.swipeview_toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
 
         final ViewPager myViewPager = (ViewPager) findViewById(R.id.viewPager);
         String selectedClass = getIntent().getStringExtra(DisplaySubjectsActivity.SELECTED_CLASS);

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -23,15 +24,22 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.edu.worx.global.utils.ApplicationConfigurations;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
 import com.github.barteksc.pdfviewer.util.FitPolicy;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
@@ -43,13 +51,29 @@ import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Properties;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -58,7 +82,9 @@ import static java.lang.Boolean.TRUE;
 
 public class FirebaseQueryActivity extends AppCompatActivity {
 
-    File file;
+    File fileHA;
+    File fileSA;
+    boolean showAnswers = false;
     long lastSavedDate;
     ArrayList<QuestionSet> mQuess = new ArrayList<>();  // From Firebase
     ArrayList<QuestionSet> mFinalSelectedQuess = new ArrayList<>();  // Final Selected Question Set
@@ -68,71 +94,58 @@ public class FirebaseQueryActivity extends AppCompatActivity {
     public static final String SELECTED_LEVEL = "SELECTED_LEVEL";
     public static final String WITH_ANSWERS = "WITH_ANSWERS";
     public static final String TABLE_QUESTION_SET = "Question_Set_Table2";
+    boolean fetchingComplete;
     SQLiteDatabase database = null;
+    String ctx;
+    boolean shuffle = true;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
-    public static class QuestionSet {
-        public long UIN;
-        public String Answer;
-        public String Description;
-        public String Keywords;
-        public String Level;
-        public String OptionA;
-        public String OptionB;
-        public String OptionC;
-        public String OptionD;
-        public String Question;
-        public String Std;
-        public String SubTopic;
-        public String TimeLimit;
-        public String Topic;
-        public int    Freq;
-
-        public void QuestionSet () {
-            return;
-        }
-        public void QuestionSet (long inUIN, String inAnswer, String inDescription, String inKeywords, String inLevel,
-                         String inOptionA, String inOptionB, String inOptionC, String inOptionD,
-                         String inQuestion, String inStd, String inSubTopic, String inTimeLimit,
-                         String inTopic) {
-
-            Answer = inAnswer;
-            Description = inDescription;
-            Keywords = inKeywords;
-            Level = inLevel;
-            OptionA = inOptionA;
-            OptionB = inOptionB;
-            OptionC = inOptionC;
-            OptionD = inOptionD;
-            Question = inQuestion;
-            Std = inStd;
-            SubTopic = inSubTopic;
-            TimeLimit = inTimeLimit;
-            Topic = inTopic;
-            UIN = inUIN;
-        }
-
-     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase_query);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        ActivityCompat.requestPermissions(this,
-                new String[]{
-                        android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-                }, 100);
 
-        queryDatabase();
+
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setLogo(R.drawable.global_school_worx);
+            getSupportActionBar().setDisplayUseLogoEnabled(true);
+        }
+
+        Bundle bundle = new Bundle();
+    //    bundle.putString(FirebaseAnalytics.Param.ITEM_ID, id);
+
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+        ctx = getIntent().getStringExtra("CALLING_CONTEXT");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, ctx);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+        if ( ctx != null) {
+            if (ctx.matches("SAMPLE MIDDLE ENGLISH GRAMMAR WORKSHEETS")) {
+                showSampleWorksheet();
+            } else if (ctx.matches("ENGLISH GRAMMAR")) {
+                queryEngGrammarDatabase();
+            }
+        }
+        else
+          queryDatabase();
+
     }
 
-    private void writeToPdfDoc( ArrayList<QuestionSet> arrQuess, boolean withAnswers) {
+    public void writeToPdfDoc( ArrayList<QuestionSet> arrQuess, boolean withAnswers, boolean shuffle) {
+
+
         try {
-            int permissionCheck;
-            permissionCheck = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+
+            if ( true /* permissionCheck == PackageManager.PERMISSION_GRANTED */) {
                 boolean dirCreated = false;
-                File dir = getCacheDir();
+                File dir = getApplicationContext().getCacheDir();
                 if (!dir.exists())
                     dirCreated = dir.mkdirs();
 
@@ -146,12 +159,16 @@ public class FirebaseQueryActivity extends AppCompatActivity {
                 }
 
                 lastSavedDate = curDate;
-                file = new File(dir,"worksheet_" + curDate + ".pdf");
-                file.createNewFile();
-                PdfGenerator.generatePdf(this, arrQuess, withAnswers, false, file);
+                fileSA = new File(dir,"worksheet_show_ans_" + curDate + ".pdf");
+                fileSA.createNewFile();
+                fileHA = new File(dir,"worksheet_hide_ans_" + curDate + ".pdf");
+                fileHA.createNewFile();
+
+                PdfGenerator.generatePdf (this, arrQuess, TRUE, false, fileSA, shuffle);
+                PdfGenerator.generatePdf(this, arrQuess, FALSE, false, fileHA, shuffle);
 
                 PDFView pdfView = findViewById(R.id.displayPdfView);
-                pdfView.fromFile(file)
+                pdfView.fromFile(fileHA)
                         .defaultPage(0)
                         .enableSwipe(true)
                         .swipeHorizontal(false)
@@ -169,8 +186,8 @@ public class FirebaseQueryActivity extends AppCompatActivity {
     }
 
     public void queryDatabase () {
-        int permissionCheck = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+      //  int permissionCheck = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (true/*permissionCheck == PackageManager.PERMISSION_GRANTED*/) {
             String std = getIntent().getStringExtra(FirebaseQueryActivity.SELECTED_STD);
             String level = getIntent().getStringExtra(FirebaseQueryActivity.SELECTED_LEVEL);
             int num = getIntent().getIntExtra(FirebaseQueryActivity.SELECTED_NUM, 0);
@@ -212,12 +229,12 @@ public class FirebaseQueryActivity extends AppCompatActivity {
                             divFactor = 1;
 
                         extraQues.getAndSet(extraQuesCnt/divFactor);
-                        fetchQuesArrFromLocalDb(quesLocalArray, std, topicNum + extraQues.get(), level, finalTopicStr);
+                        fetchQuesArrFromLocalDb(quesLocalArray, std, level, finalTopicStr);
                         chooseMinFreqQuestionSet(quesLocalArray, topicNum + extraQues.get());
                         extraQuesCnt = extraQuesCnt - (extraQuesCnt/divFactor);
                         extraQues.getAndSet(extraQuesCnt);
                         if (latch.getAndDecrement() == 1) {
-                            writeToPdfDoc(mFinalSelectedQuess, withAnswers);
+                            writeToPdfDoc(mFinalSelectedQuess, withAnswers, true);
                             progressBar2.setVisibility (View.GONE);
                         }
                     }
@@ -261,7 +278,7 @@ public class FirebaseQueryActivity extends AppCompatActivity {
     }
 
     /* Sqlite Database API */
-    public void fetchQuesArrFromLocalDb(ArrayList<QuestionSet> quesLocalArray, String std, int num, String level, CharSequence topic){
+    public void fetchQuesArrFromLocalDb(ArrayList<QuestionSet> quesLocalArray, String std, String level, CharSequence topic){
         int i = 0;
         String columns[] = {"UIN", "STD","LEVEL", "TOPIC", "FREQ"};
         String whereArgs[] = {std, level, topic.toString()}; // {"Eighth", "Easy", "Percentage"};
@@ -334,6 +351,83 @@ public class FirebaseQueryActivity extends AppCompatActivity {
         return freq;
     }
 
+
+    private void queryEngGrammarDatabase() {
+
+        int maxCnt = 5;
+        ArrayList<String> selectedTopics;
+        ArrayList<String> selectedTopicsIndex;
+        ArrayList<String> mParams;
+        Intent intent = getIntent();
+        final LinearLayout progressBar2 = findViewById(R.id.progressBarLayout);
+        ArrayList<QuestionSet> quesLocalArray = new ArrayList<>();
+
+        progressBar2.bringToFront();
+
+        selectedTopicsIndex = intent.getStringArrayListExtra("SELECTED_SUBTOPICS_INDEX");
+        selectedTopics = intent.getStringArrayListExtra("SELECTED_SUBTOPICS");
+        mParams = intent.getStringArrayListExtra("SELECTED_PARAMS");
+        AtomicInteger latch = new AtomicInteger(selectedTopicsIndex.size());
+        for (int i = 0; i < selectedTopicsIndex.size(); i++) {
+
+
+
+            DatabaseReference masterDbReference2 = FirebaseDatabase.getInstance().getReference("MiddleEngGrammar/Sixth/" + mParams.get(1) + "/" + selectedTopicsIndex.get(i) + "/Easy");
+            final Query q2 = masterDbReference2.orderByChild("Question");
+
+            q2.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    mQuess.clear();
+                    quesLocalArray.clear();
+
+                    for (DataSnapshot quesSnapshot : dataSnapshot.getChildren()) {
+                        if (quesSnapshot != null) {
+                            QuestionSet qSet = quesSnapshot.getValue(QuestionSet.class);
+                            mQuess.add(qSet);
+
+                        }
+                    }
+
+
+                    fetchQuesArrFromLocalDb(quesLocalArray, "Sixth", "Easy", mParams.get(1));
+                    chooseMinFreqQuestionSet(quesLocalArray, maxCnt);
+
+
+                    if (latch.getAndDecrement() == 1) {
+                        int ins = 0;
+                        for (int z = 0; z < selectedTopics.size() && ins < mFinalSelectedQuess.size(); z++) {
+                            QuestionSet qSubtopic = new QuestionSet(selectedTopics.get(z));
+                            ins = 5*z + z;
+                            mFinalSelectedQuess.add(ins, qSubtopic);
+
+                        }
+                        writeToPdfDoc(mFinalSelectedQuess, false, false);
+                        progressBar2.setVisibility(View.GONE);
+                    }
+                }
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+
+        database = openOrCreateDatabase("localQuestionDB.db", Context.MODE_PRIVATE, null);
+
+        database.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_QUESTION_SET + "( "
+                + "UIN" + " INTEGER PRIMARY KEY, "
+                + "STD" + " TEXT, "
+                + "LEVEL" + " TEXT, "
+                + "FREQ" + " INTEGER, "
+                + "TOPIC" + " TEXT "
+                + ")");
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -344,11 +438,47 @@ public class FirebaseQueryActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        if (ctx != null && (ctx.matches("ENGLISH GRAMMAR") || ctx.matches("SAMPLE MIDDLE ENGLISH GRAMMAR WORKSHEETS")) ){
+            MenuItem item = menu.findItem(R.id.show_answers);
+            item.setVisible(FALSE);
+            item = menu.findItem(R.id.hide_answers);
+            item.setVisible(FALSE);
+        }
+        else if(showAnswers) {
+            MenuItem item = menu.findItem(R.id.show_answers);
+            item.setVisible(FALSE);
+            item = menu.findItem(R.id.hide_answers);
+            item.setVisible(TRUE);
+        }
+        else {
+            MenuItem item = menu.findItem(R.id.hide_answers);
+            item = menu.findItem(R.id.hide_answers);
+            item.setVisible(FALSE);
+            item = menu.findItem(R.id.show_answers);
+            item.setVisible(TRUE);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()) {
+            case R.id.show_answers :
+                showAnswers = true;
+                showFile(fileSA);
+                break;
+            case R.id.hide_answers :
+                showAnswers = false;
+                showFile(fileHA);
+                break;
             case R.id.download_pdf :
-                onDownload(file.toString());
+                if(showAnswers)
+                    onDownload(fileSA.toString());
+                else
+                    onDownload(fileHA.toString());
                 break;
 
             case (R.id.Info) :{
@@ -372,15 +502,92 @@ public class FirebaseQueryActivity extends AppCompatActivity {
         downloadWatermarkedPdf();
     }
 
-    private void downloadWatermarkedPdf() {
+    private void instantDownload () {
         Calendar cal = Calendar.getInstance();
         Date currentDate = cal.getTime();
         long curDate = currentDate.getTime();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        try {
+            int permissionCheck;
+            permissionCheck = ContextCompat.checkSelfPermission(FirebaseQueryActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+                File root = android.os.Environment.getExternalStorageDirectory();
+                File dir = new File(root.getAbsolutePath() + "/download");
+                dir.mkdirs();
+                File downloadedFile = new File(dir, "worksheet" + curDate + ".pdf");
+                if (downloadedFile.exists()) {
+                    downloadedFile.delete();
+                }
+
+                downloadedFile.createNewFile();
+                boolean withAnswers = getIntent().getBooleanExtra(FirebaseQueryActivity.WITH_ANSWERS, false);
+                if (ctx != null && ctx.matches("SAMPLE MIDDLE ENGLISH GRAMMAR WORKSHEETS")) {
+                    FileChannel inChannel = null;
+                    FileChannel outChannel = null;
+
+                    try {
+                        inChannel = new FileInputStream(fileHA).getChannel();
+                        outChannel = new FileOutputStream(downloadedFile).getChannel();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        inChannel.transferTo(0, inChannel.size(), outChannel);
+                    } finally {
+                        if (inChannel != null)
+                            inChannel.close();
+                        if (outChannel != null)
+                            outChannel.close();
+                    }
+
+                } else {
+                    if (ctx != null && ctx.matches("ENGLISH GRAMMAR"))
+                        shuffle = false;
+                    else
+                        shuffle = true;
+
+                    PdfGenerator.generatePdf(FirebaseQueryActivity.this, mFinalSelectedQuess, withAnswers, true, downloadedFile, shuffle);
+                }
+
+
+                prefs.edit()
+                        .putLong(LAST_DOWNLOADED_TIMESTAMP_KEY, curDate)
+                        .apply();
+
+                AlertDialog.Builder downloadSuccessfulBuilder = new AlertDialog.Builder(FirebaseQueryActivity.this);
+                String onSuccessDownloadMsg = "Please check " + downloadedFile.getPath() + " in Files/Download Folder";
+                downloadSuccessfulBuilder.setMessage(onSuccessDownloadMsg).setTitle("Download Successful!");
+                AlertDialog downloadSuccessfulDlg = downloadSuccessfulBuilder.create();
+                downloadSuccessfulDlg.show();
+
+            }else{
+                AlertDialog.Builder downloadFailureBuilder = new AlertDialog.Builder(FirebaseQueryActivity.this);
+                downloadFailureBuilder.setMessage("Permission Denied! Please try again by granting permission.").setTitle("Error!").show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            AlertDialog.Builder downloadFailureBuilder = new AlertDialog.Builder(FirebaseQueryActivity.this);
+            downloadFailureBuilder.setMessage("Please try again!").setTitle("Error!").show();
+        }
+    }
+    private void downloadWatermarkedPdf() {
+        Calendar cal = Calendar.getInstance();
+        Date currentDate = cal.getTime();
+        long curDate = currentDate.getTime();
+        boolean hasSubscription = ApplicationConfigurations.hasSusbscription(getApplicationContext());
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         long lastDownloadedTimeStamp = prefs.getLong(LAST_DOWNLOADED_TIMESTAMP_KEY, 0);
         long nextValidDownload = (lastDownloadedTimeStamp == 0 ? lastDownloadedTimeStamp : lastDownloadedTimeStamp + (12*60*60*1000));
 
-        if( nextValidDownload < curDate ){
+        if ( hasSubscription || (ctx != null && ctx.matches("SAMPLE MIDDLE ENGLISH GRAMMAR WORKSHEETS"))){
+            instantDownload ();  // Unlimited Downloads
+        }
+        else if( nextValidDownload < curDate){
+
+
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Download Limit : One Document per 12 hours. Do you want to continue Downloading this file?").setTitle("Confirmation...")
                     .setIcon(R.mipmap.confirmation)
@@ -390,16 +597,26 @@ public class FirebaseQueryActivity extends AppCompatActivity {
                             permissionCheck = ContextCompat.checkSelfPermission(FirebaseQueryActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
                             if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
                                 File root = android.os.Environment.getExternalStorageDirectory();
-                                File dir = new File (root.getAbsolutePath() + "/download");
+                                File dir = new File(root.getAbsolutePath() + "/download");
                                 dir.mkdirs();
-                                File downloadedFile = new File(dir, "worksheet"+ curDate+".pdf");
-                                if(downloadedFile.exists()) {
+                                File downloadedFile = new File(dir, "worksheet" + curDate + ".pdf");
+                                if (downloadedFile.exists()) {
                                     downloadedFile.delete();
                                 }
 
                                 downloadedFile.createNewFile();
-                                boolean withAnswers = getIntent().getBooleanExtra( FirebaseQueryActivity.WITH_ANSWERS, false);
-                                PdfGenerator.generatePdf(FirebaseQueryActivity.this, mFinalSelectedQuess, withAnswers, true, downloadedFile);
+                                boolean withAnswers = getIntent().getBooleanExtra(FirebaseQueryActivity.WITH_ANSWERS, false);
+
+
+                                if (ctx != null && ctx.matches("ENGLISH GRAMMAR"))
+                                  shuffle = false;
+                                else
+                                   shuffle = true;
+
+                                PdfGenerator.generatePdf(FirebaseQueryActivity.this, mFinalSelectedQuess, withAnswers, true, downloadedFile, shuffle);
+
+
+
                                 prefs.edit()
                                         .putLong(LAST_DOWNLOADED_TIMESTAMP_KEY, curDate)
                                         .apply();
@@ -455,7 +672,7 @@ public class FirebaseQueryActivity extends AppCompatActivity {
                         finish();
                     }
                 }
-                downloadWatermarkedPdf();
+          //      downloadWatermarkedPdf();
                 break;
 
             case 100:
@@ -465,8 +682,148 @@ public class FirebaseQueryActivity extends AppCompatActivity {
                         finish();
                     }
                 }
-   //             queryDatabase();   IK
+
                 break;
+        }
+    }
+
+    void showFile ( File file) {
+        PDFView pdfView = findViewById(R.id.displayPdfView);
+        pdfView.fromFile(file)
+                .defaultPage(0)
+                .enableSwipe(true)
+                .swipeHorizontal(false)
+                .enableAnnotationRendering(true)
+                .enableAntialiasing(true)
+                .pageFitPolicy(FitPolicy.WIDTH)
+                .scrollHandle(new DefaultScrollHandle(this))
+                .load();
+    }
+
+    void showSampleWorksheet () {
+        ArrayList<String> mParams;
+        Properties properties = new Properties();
+        String sampleFile = "";
+        String firebaseDirName = "", topic = "";
+        try {
+
+            SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+            SAXParser parser = saxParserFactory.newSAXParser();
+            parser.parse(getResources().getAssets().open("configurations/samples_middleenggrammar.xml"), new DefaultHandler(){
+                @Override
+                public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+                    if(qName == "sample"){
+                        String key = attributes.getValue("name");
+                        String value = attributes.getValue("value");
+                        properties.setProperty(key, value);
+                    }
+                }
+            });
+        }catch (SAXException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        mParams = getIntent().getStringArrayListExtra("SELECTED_PARAMS");
+        if (mParams != null) {
+            topic = properties.getProperty(mParams.get(0));
+            sampleFile = properties.getProperty(mParams.get(1));
+        }
+
+        firebaseDirName = topic + "/sample_worksheets" + File.separator + sampleFile;
+        displaySamplePDF(firebaseDirName);
+
+     }
+
+    public void displaySamplePDF (String firebaseDirName) {
+
+        FirebaseStorage inst = FirebaseStorage.getInstance();
+        StorageReference mStorageReference = inst.getReference();;
+        StorageReference fileRef = mStorageReference.child(firebaseDirName);
+
+
+        String localDirName = firebaseDirName.replace('/' , '_');
+        localDirName = localDirName.replace('.' , '_');
+        File mydir =  this.getDir(localDirName, Context.MODE_PRIVATE);
+
+        File localFile = new File(mydir, "sample.pdf");
+        fetchingComplete = false;
+
+        if(localFile.exists())
+            localFile.delete();
+
+        if (!localFile.exists()) {
+            try {
+                localFile.createNewFile();
+
+                this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        final LinearLayout progressBar = (LinearLayout) findViewById(R.id.progressBarLayout);
+                        progressBar.bringToFront();
+                    }           });
+
+
+                FileDownloadTask fileDownloadTask = fileRef.getFile(localFile);
+                long fileSize = localFile.getUsableSpace();
+                fileDownloadTask.addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        // Local temp file has been created
+
+                            runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                LinearLayout progressBar = (LinearLayout) findViewById(R.id.progressBarLayout);
+
+                                progressBar.setVisibility(View.GONE);
+
+                            }
+                        });
+
+                        fetchingComplete = true;
+                        fileHA = localFile;
+                        showFile(localFile);
+
+                    }
+                });
+
+                fileDownloadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                            runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                LinearLayout progressBar = (LinearLayout) findViewById(R.id.progressBarLayout);
+                                progressBar.setVisibility(View.GONE);
+                                /* Delete the local file path which exists due to previous failed download*/
+                                localFile.delete();
+                            }
+                        });
+                    }
+                });
+            }catch (NullPointerException e) {
+                final LinearLayout progressBar = (LinearLayout) findViewById(R.id.progressBarLayout);
+                progressBar.setVisibility(View.GONE);
+            } catch (IOException ignored) {
+            }
+
+
+        } else {
+                runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    LinearLayout progressBar = (LinearLayout) findViewById(R.id.progressBarLayout);
+                    progressBar.setVisibility(View.GONE);
+                }                });
+
+            int size = (int)localFile.getUsableSpace();
+            fetchingComplete = true;
+            showFile(localFile);
+
         }
     }
 }

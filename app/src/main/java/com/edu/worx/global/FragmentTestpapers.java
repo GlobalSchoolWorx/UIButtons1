@@ -3,6 +3,7 @@ package com.edu.worx.global;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -94,6 +95,7 @@ public class FragmentTestpapers extends Fragment {
         for (int i = 0; i < yearArray.length; i++) {
             final Button myButton = new Button(getContext());
             myButton.setText(yearArray[i]);
+            myButton.setTextColor(Color.WHITE);
             myButton.setId(i);
             if (!verticalOrientation && (i > yearArray.length / 2))
                 parms.leftMargin = (int) getPixel(3 * screenLeftMargin);

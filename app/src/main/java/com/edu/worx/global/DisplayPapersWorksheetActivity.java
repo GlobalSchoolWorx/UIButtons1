@@ -29,9 +29,14 @@ public class DisplayPapersWorksheetActivity extends DisplayMenuActivity implemen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_papers_worksheet);
 
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.paper_toolbar);
+        setSupportActionBar(toolbar);
+
         // Get a support ActionBar corresponding to this toolbar and enable the Up button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setTitle(selected_class_subject);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setTitle(selected_class_subject);
+        }
 
         FragmentTabHost tabHost = (FragmentTabHost)findViewById (R.id.tabHost);
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
@@ -60,8 +65,13 @@ public class DisplayPapersWorksheetActivity extends DisplayMenuActivity implemen
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.download_pdf);
+        MenuItem item = menu.findItem(R.id.show_answers);
         item.setVisible(FALSE);
+        item = menu.findItem(R.id.hide_answers);
+        item.setVisible(FALSE);
+        item = menu.findItem(R.id.download_pdf);
+        item.setVisible(FALSE);
+
         return TRUE;
     }
 
