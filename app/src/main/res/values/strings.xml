@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">Global School Worx</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="worksheets_fragment">WORKSHEETS</string>
+    <string name="test_papers_fragment">TESTPAPERS</string>
+    <string name="first">First</string>
+    <string name="second">Second</string>
+    <string name="third">Third</string>
+    <string name="fourth">Fourth</string>
+    <string name="fifth">Fifth</string>
+    <string name="sixth">Sixth</string>
+    <string name="seventh">Seventh</string>
+    <string name="eighth">Eighth</string>
+    <string name="ninth">Ninth</string>
+    <string name="tenth">Tenth</string>
+    <string name="download">Fetching document…</string>
+    <string name="download_pdf">Download PDF</string>
+    <string name="show_answers">Show Answers</string>
+    <string name="hide_answers">Hide Answers</string>
+    <string name="info">Info</string>
+    <string name="primary">Primary Level</string>
+    <string name="middle">Middle Level</string>
+    <string name="high">High</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_google_sign_in">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="uploadText">"Upload Your Testpapers or Worksheets Here \n and Earn Reward Points!"</string>
+    <string name="uploadButton">"Upload Document"</string>
+    <string name="selectClass">"Select Class"</string>
+    <string-array name="spinner_subject_items">
+        <item>English</item>
+        <item>Hindi</item>
+        <item>Maths</item>
+        <item>Computer Science</item>
+        <item>Science</item>
+    </string-array>
+    <string-array name="spinner_class_items">
+        <item>First</item>
+        <item>Second</item>
+        <item>Third</item>
+        <item>Fourth</item>
+        <item>Fifth</item>
+        <item>Sixth</item>
+        <item>Seventh</item>
+        <item>Eighth</item>
+        <item>Ninth</item>
+        <item>Tenth</item>
+    </string-array>
+    <string-array name="spinner_wg_class_items">
+        <item>Eighth</item>
+        <item>Ninth</item>
+    </string-array>
+    <string name="generateworksheet">Generating Worksheet…</string>
+    <string name="key_ads_display_local_state">key_ads_display_local_state_new</string>
+    <string name="buy_subscription">Buy Subscription</string>
+    <string name="buy_subscription_mesg">Please buy an appropriate subscription for Complete Functionality. Subscription can be canceled any time during free trial period and your card will not be charged. </string>
+    <string name="error_internet_connectivity">No Internet Connectivity! Please ensure net connectivity to continue to enjoy the services. </string>
+    <string name="billing_unavailable_unknown_reason">In App Billing unavailable, Please check connectivity or try after sometime.</string>
+    <string name="billing_unavailable_android_market_version"><![CDATA[In-app billing service is unavailable, please upgrade Android Market/Play to version >= 3.9.16]]></string>
+    <string name="billing_connecting_to_google_play">Connecting To Google…</string>
+    <string name="six_months_subscription">Six Months Subscription</string>
+    <string name="one_year_subscription">One Year Subscription</string>
+    <string name="test_subscription">Test Subscription</string>
+    <string name="downloadingHomework">Downloading Homework…</string>
+</resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#192250"
+    tools:context=".signin.GoogleSignInActivity">
+
+
+    <Button
+        android:id="@+id/label_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#35C116"
+        android:capitalize="characters"
+        android:ellipsize="middle"
+        android:enabled="true"
+        android:fadeScrollbars="false"
+        android:fadingEdge="vertical"
+        android:filterTouchesWhenObscured="true"
+        android:fitsSystemWindows="true"
+        android:fontFamily="sans-serif-condensed"
+        android:foregroundGravity="fill_horizontal|center_vertical"
+        android:text="GLOBAL SCHOOL WORX"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColorHighlight="#FFFFFF"
+        android:theme="@android:style/Animation.Translucent"
+        tools:layout_editor_absoluteX="-98dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+
+    <Button
+        android:id="@+id/skipButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="145dp"
+        android:layout_height="42dp"
+        android:drawableEnd="@drawable/arrow_044"
+        android:text="Skip"
+        android:textAllCaps="false"
+        android:textColor="#35C116"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInButton"
+        app:layout_constraintVertical_bias="0.823" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/signInButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.384">
+
+    </com.google.android.gms.common.SignInButton>
+</androidx.constraintlayout.widget.ConstraintLayout>

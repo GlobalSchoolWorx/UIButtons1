@@ -1,0 +1,162 @@
+{
+  "login": {
+    "admin": {
+      "name": "IKBIRKAUR",
+      "password": "1234"
+    },
+    "teacher": {
+      "name": "PRITPALSINGH",
+      "password": "1234"
+    },
+    "student": [
+      {
+        "name": "SARITAKAUR",
+        "password": "1234"
+      },
+      {
+        "name": "EKNOORSINGH",
+        "password": "1234"
+      }
+    ]
+  },
+  "classes": {
+    "TUESDAY": [
+      {
+        "title": "BFS SCHOOL",
+        "timings": "8:45 AM to 12:30 PM",
+        "duration": "3 hours 45 minutes",
+        "location": "BT KAWADE ROAD"
+      },
+      {
+        "title": "AMRITA ANAND",
+        "timings": "4:30 PM to 5:30 PM",
+        "duration": "1 hour",
+        "location": "NIBM ROAD"
+      },
+      {
+        "title": "SIKH CENTER STAFF",
+        "timings": "7:00 PM to 8:30 PM",
+        "duration": "1 hour 30 minutes",
+        "location": "MAGARPATTA"
+      }
+    ],
+    "WEDNESDAY": [
+      {
+        "title": "SARITA KAUR",
+        "timings": "9:00 AM to 10:30 AM",
+        "duration": "1 hour 30 minutes",
+        "location": "NIBM ROAD"
+      },
+      {
+        "title": "BFS SCHOOL",
+        "timings": "1:30 PM to 3:30 PM",
+        "duration": "2 hours",
+        "location": "BT KAWADE ROAD"
+      },
+      {
+        "title": "EKNOOR KAUR",
+        "timings": "4:00 PM to 5:00 PM",
+        "duration": "1 hour",
+        "location": "NIBM ROAD"
+      },
+      {
+        "title": "BHAVNI KAUR",
+        "timings": "5:30 PM to 6:30 PM",
+        "duration": "1 hour",
+        "location": "NIBM ROAD"
+      },
+      {
+        "title": "GUNEET KAUR",
+        "timings": "7:00 PM to 8:00 PM",
+        "duration": "1 hour",
+        "location": "NIBM ROAD"
+      }
+    ],
+    "THURSDAY": [
+      {
+        "title": "1",
+        "timings": "Tom",
+        "duration": "Cruise",
+        "location": "abc"
+      },
+      {
+        "title": "1",
+        "timings": "Tom",
+        "duration": "Cruise",
+        "location": "abc"
+      }
+    ],
+    "FRIDAY": [
+      {
+        "title": "1",
+        "timings": "Tom",
+        "duration": "Cruise",
+        "location": "abc"
+      },
+      {
+        "title": "1",
+        "timings": "Tom",
+        "duration": "Cruise",
+        "location": "abc"
+      }
+    ],
+    "SATURDAY": [
+      {
+        "title": "1",
+        "timings": "Tom",
+        "duration": "Cruise",
+        "location": "abc"
+      },
+      {
+        "title": "1",
+        "timings": "Tom",
+        "duration": "Cruise",
+        "location": "abc"
+      }
+    ],
+    "SUNDAY": [
+      {
+        "title": "1",
+        "timings": "Tom",
+        "duration": "Cruise",
+        "location": "abc"
+      },
+      {
+        "title": "1",
+        "timings": "Tom",
+        "duration": "Cruise",
+        "location": "abc"
+      }
+    ]
+  },
+  "SUBJECTS_TENTH": {
+    "MATHS": [
+      {
+        "due date": "",
+        "link1": "",
+        "doc1": "",
+        "doc2": ""
+      },
+      {
+        "due date": "",
+        "link1": "",
+        "doc1": "",
+        "doc2": ""
+      }
+    ],
+    "BIOLOGY": [
+      {
+        "due date": "",
+        "link1": "",
+        "doc1": "",
+        "doc2": ""
+      },
+      {
+        "due date": "",
+        "link1": "",
+        "doc1": "",
+        "doc2": ""
+      }
+    ]
+  }
+}

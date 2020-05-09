@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+style="@style/ActionBarCompat" >
+
+<ImageView
+    android:layout_width="400dp"
+    android:layout_height="10dp"
+    android:clickable="false"
+    android:paddingLeft="15dip"
+    android:scaleType="center"
+    />
+
+</LinearLayout>

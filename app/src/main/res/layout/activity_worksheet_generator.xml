@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/gsw_ws_bg"
+        tools:context=".WorksheetGeneratorActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            android:background="@drawable/gsw_ws_bg"
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_default"
+            android:orientation="vertical"
+            tools:context=".WorksheetGeneratorActivity"
+            android:theme="@style/CheckboxStyle">
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@android:style/ButtonBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text=" EIGHTH STD."
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:textSize="20dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent"
+                    android:textAlignment="center"
+                    android:text="Question Count \n(Not more than 25) "
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    />
+
+                <EditText
+                    android:id="@+id/numQuesCnt"
+                    android:layout_width="74dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/textView4"
+                    android:maxLength="2"
+                    android:ems="10"
+                    android:textSize="10dp"
+                    android:inputType="number"
+                    android:text="10"
+                    android:textColor="@color/colorAccent"
+                    />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@android:style/ButtonBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="SELECT TOPICS "
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <CheckBox
+                    android:id="@+id/rationalNumbersCheckBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Rational Numbers"
+                    android:checked="true"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/compoundInterestCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Compound Interest"
+                    android:checked="true"
+                    android:layout_toRightOf="@+id/rationalNumbersCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/percentageCheckBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Percentage"
+                    android:checked="true"
+                    android:layout_below="@+id/rationalNumbersCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/profitLossDiscountCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profit, Loss &amp; Discount"
+                    android:checked="true"
+                    android:layout_below="@+id/compoundInterestCheckBox"
+                    android:layout_toRightOf="@+id/percentageCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/percentageApplicationsCheckBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Percentage and its Applications"
+                    android:checked="true"
+                    android:layout_below="@+id/percentageCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/factorisationCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Factorisation"
+                    android:checked="true"
+                    android:layout_below="@+id/profitLossDiscountCheckBox"
+                    android:layout_toRightOf="@+id/percentageApplicationsCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/algebraicExpressionsCheckBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Algebraic Expressions"
+                    android:checked="true"
+                    android:layout_below="@+id/percentageApplicationsCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/expansionsCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expansions"
+                    android:checked="true"
+                    android:layout_toRightOf="@+id/algebraicExpressionsCheckBox"
+                    android:layout_below="@id/factorisationCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/linearSimEquationsCheckBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Linear (simultaneous) Equations"
+                    android:checked="true"
+                    android:layout_below="@id/algebraicExpressionsCheckBox"
+                    android:textColor="@color/colorAccent" />
+                   <CheckBox
+                    android:id="@+id/linearEquationsCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Linear Equations"
+                    android:checked="true"
+                    android:layout_below="@+id/expansionsCheckBox"
+                    android:layout_toRightOf="@id/linearSimEquationsCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+
+
+                <CheckBox
+                    android:id="@+id/indicesCheckBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Indices"
+                    android:checked="true"
+                    android:layout_below="@+id/linearSimEquationsCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/mensurationCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mensuration"
+                    android:checked="true"
+                    android:layout_below="@id/linearEquationsCheckBox"
+                    android:layout_toRightOf="@+id/indicesCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/squareRootsCheckBox"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Square Roots"
+                    android:checked="true"
+                    android:layout_below="@+id/indicesCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/cubeRootsCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cube Roots"
+                    android:checked="true"
+                    android:layout_below="@id/mensurationCheckBox"
+                    android:layout_toRightOf="@+id/squareRootsCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <CheckBox
+                    android:id="@+id/directIndirectCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Direct &amp; Indirect Variations"
+                    android:checked="true"
+                    android:layout_below="@+id/squareRootsCheckBox"
+                    android:textColor="@color/colorAccent" />
+
+                <Button
+                    android:id="@+id/genWorksheet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:padding="5dp"
+                    android:layout_below="@+id/directIndirectCheckBox"
+                    android:text="Generate Worksheet"
+                    style="@android:style/ButtonBar"
+                    android:background="@drawable/bluebutton"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@drawable/gsw_ws_bg">
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

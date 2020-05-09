@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<samples>
+
+    <sample name = "Middle" value="middleenggrammar"/>
+    <sample name = "Primary" value="primaryenggrammar"/>
+    <sample name = "THE SENTENCE" value="sample_sentences.pdf"/>
+    <sample name = "THE NOUN" value="sample_noun.pdf"/>
+    <sample name = "THE PRONOUN" value="sample_pronoun.pdf"/>
+    <sample name = "THE ADJECTIVE" value="sample_adjectives.pdf"/>
+    <sample name = "DEGREES OF COMPARISON" value="sample_degree.pdf"/>
+    <sample name = "ARTICLES" value="sample_articles.pdf"/>
+    <sample name = "VERBS : MODALS AND AUXILLARIES" value="sample_verbmodals.pdf"/>
+    <sample name = "SIMPLE AND CONTINUOUS TENSES" value="sample_simpletenses.pdf"/>
+    <sample name = "PERFECT TENSES" value="sample_perfecttense.pdf"/>
+    <sample name = "VERBS : TRANSITIVE AND INTRANSITIVE" value="sample_verbtransitive.pdf"/>
+    <sample name = "ACTIVE AND PASSIVE VOICE" value="sample_voice.pdf"/>
+    <sample name = "SUBJECT-VERB AGREEMENT" value="sample_verbagreement.pdf"/>
+    <sample name = "THE ADVERB" value="sample_adverbs.pdf"/>
+    <sample name = "THE PREPOSITION" value="sample_preposition.pdf"/>
+    <sample name = "THE CONJUNCTION" value="sample_conjunctions.pdf"/>
+    <sample name = "THE INTERJETION" value="sample_interjections.pdf"/>
+    <sample name = "PUNCTUATION" value="sample_punctuation.pdf"/>
+    <sample name = "TRANSFORMATION OF SENTENCES" value="sample_transformation.pdf"/>
+    <sample name = "DIRECT AND INDIRECT SPEECH" value="sample_directindirect.pdf"/>
+    <sample name = "KINDS OF PHRASES" value="sample_kindsofphrases.pdf"/>
+    <sample name = "KINDS OF CLAUSES" value="sample_kindsofclauses.pdf"/>
+    <sample name = "SIMPLE, COMPOUND AND COMPLEX" value="sample_scc.pdf"/>
+    <sample name = "SYNTHESIS OF SENTENCES" value="sample_synthesis.pdf"/>
+    <sample name = "KINDS OF NOUNS"  value="sample_kinds_of_nouns.pdf"/>
+    <sample name = "THE NOUN : GENDER"  value="sample_gender.pdf"/>
+    <sample name = "THE NOUN : NUMBER"  value="sample_number.pdf"/>
+    <sample name = "THE NOUN : THE CASE"  value="sample_noun_case.pdf"/>
+    <sample name = "COMPARISON OF ADJECTIVE"  value="sample_adjective_comparison.pdf"/>
+    <sample name = "Articles : A An and The"  value="sample_articles_a_an_the.pdf"/>
+    <sample name = "INTEROGATIVE PRONOUNS"  value="sample_interrogative_pronouns.pdf"/>
+    <sample name = "RELATIVE PRONOUNS"  value="sample_relative_pronouns.pdf"/>
+    <sample name = "REFLEXIVE AND EMPHATIC"  value="sample_reflexive_emphatic.pdf"/>
+    <sample name = "THE VERB"  value="sample_verb.pdf"/>
+    <sample name = "THE MOOD"  value="sample_mood.pdf"/>
+    <sample name = "THE TENSE"  value="sample_tense.pdf"/>
+    <sample name = "THE USES OF THE TENSE"  value="sample_uses_of_tense.pdf"/>
+    <sample name = "VERBS AND TENSES"  value="sample_verbs_tenses.pdf"/>
+    <sample name = "THE INFINITIVE"  value="sample_infinitive.pdf"/>
+    <sample name = "THE PARTICIPLE"  value="sample_participle.pdf"/>
+    <sample name = "THE GERUND"  value="sample_gerund.pdf"/>
+    <sample name = "THE OPPOSITES"  value="sample_opposites.pdf"/>
+    <sample name = "FUN WITH WORDS"  value="sample_fun_with_words.pdf"/>
+    <sample name = "MODEL AUXILIARIES"  value="sample_model_auxillaries.pdf"/>
+    <sample name = "CORRECT ENGLISH"  value="sample_correct_english.pdf"/>
+    <sample name = "AIDS TO VOCABULARY"  value="sample_aids_to_vocabulary.pdf"/>
+    <sample name = "WORD-BUILDING"  value="sample_word_building.pdf"/>
+    <sample name = "VERB COMBINATIONS"  value="sample_verbs_combinations.pdf"/>
+    <sample name = "IDOMS AND PROVERBS"  value="sample_idioms_proverbs.pdf"/>
+    <sample name = "SIMPLE SENTENCE"  value="sample_simple_sentence.pdf"/>
+    <sample name = "PHRASES"  value="sample_phrases.pdf"/>
+    <sample name = "CLAUSES"  value="sample_clauses.pdf"/>
+    <sample name = "COMPOUND AND COMPLEX"  value="sample_compound_complex.pdf"/>
+    <sample name = ""  value=""/>
+
+
+
+</samples>

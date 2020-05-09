@@ -1,0 +1,29 @@
+{
+  "name": "uibuttons1",
+  "version": "1.0.0",
+  "description": "This is a directory for Global School Worx",
+  "main": "index.html",
+  "scripts": {
+    "start":"npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite":"lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GlobalSchoolWorx/UIButtons1.git"
+  },
+  "keywords": [
+    "global",
+    "school",
+    "worx"
+  ],
+  "author": "Ikbir Kaur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GlobalSchoolWorx/UIButtons1/issues"
+  },
+  "homepage": "https://github.com/GlobalSchoolWorx/UIButtons1#readme",
+  "devDependencies": {
+    "lite-server": "^2.4.0"
+  }
+}
