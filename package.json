@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/GlobalSchoolWorx/UIButtons1#readme",
   "devDependencies": {
-    "lite-server": "^2.4.0"
+    "lite-server": "^2.6.1"
   }
 }
